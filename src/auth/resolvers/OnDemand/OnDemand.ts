@@ -53,8 +53,6 @@ export class OnDemand implements IAuthResolver {
     if (!fs.existsSync(dataFilePath) || this._authOptions.force) {
       cookies = this.saveAuthData(dataFilePath);
     } else {
-      console.log(`[node-sp-auth]: reading auth data from ${dataFilePath}`);
-
       cookies = JSON.parse(this._cpass.decode(fs.readFileSync(dataFilePath).toString()));
       let expired = false;
       cookies.forEach((cookie) => {
